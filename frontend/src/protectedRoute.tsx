@@ -1,0 +1,9 @@
+// src/ProtectedRoute.tsx
+import { Navigate } from 'react-router-dom';
+import { useAuth } from './pages/authentication/authContext';
+import { JSX } from 'react';
+
+export default function ProtectedRoute({ children }: { children: JSX.Element }) {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? children : <Navigate to="/" />;
+}
